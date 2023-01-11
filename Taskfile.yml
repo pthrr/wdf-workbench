@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  create:
+    cmds:
+      - python3 -m venv --upgrade-deps --copies --clear venv
+      - ./venv/bin/python3 -m pip install pip-tools --no-warn-script-location
+
+  compile:
+    cmds:
+      - ./venv/bin/python3 -m piptools compile -o requirements.txt requirements.in
+
+  sync:
+    cmds:
+      - ./venv/bin/python3 -m piptools sync
